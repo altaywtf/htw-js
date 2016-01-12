@@ -10,3 +10,6 @@
 I started to my journey by reading [Eloquent Javascript](http://eloquentjavascript.net/) by Marijn Haverbeke.
 
 I'm also trying to solve some challanges on [Codewars](www.codewars.com).
+
+##Week Two
+This week, I decided to take a look at NodeJS. First, I've read [The Art of Node by Max Ogden](https://github.com/maxogden/art-of-node#) and then I take a look at the [LearnYouNode](https://www.github.com/workshopper/learnyounode) exercies on [nodeschool](http://nodeschool.io/).
