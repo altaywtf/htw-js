@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Raw React</title>
+	<style>
+		body {
+		  font-family: Tahoma, sans-serif;
+		  margin: 0;
+		}
+
+		.ContactView-title {
+		  font-size: 24px;
+		  padding: 0 24px;
+		}
+
+		.ContactView-list {
+		  list-style: none;
+		  margin: 0;
+		  padding: 0;
+		  border-top: 1px solid #f0f0f0;
+		}
+
+		.ContactItem {
+		  margin: 0;
+		  padding: 8px 24px;
+		  border-bottom: 1px solid #f0f0f0;
+		}
+		.ContactItem-name {
+		  font-size: 16px;
+		  font-weight: bold;
+		  margin: 0;
+		}
+		.ContactItem-email {
+		  font-size: 14px;
+		  margin-top: 4px;
+		  font-style: italic;
+		  color: #888;
+		}
+		.ContactItem-description {
+		  font-size: 14px;
+		  margin-top: 4px;
+		}
+
+		.ContactForm {
+		  padding: 8px 24px;
+		}
+		.ContactForm > input,
+		.ContactForm > textarea {
+		  display: block;
+		  width: 240px;
+		  padding: 4px 8px;
+		  margin-bottom: 8px;
+		  border-radius: 3px;
+		  border: 1px solid #888;
+		  font-size: 14px;
+		}
+
+		.ContactForm-error {
+			border: 1px solid red!important;
+		}
+	
+		</style>
+</head>
+<body>
+	<div id="react-app"></div>
+
+	<script src="https://fb.me/react-0.14.6.js"></script>
+	<script src="https://fb.me/react-dom-0.14.6.js"></script>
+	
+	<script>
+		var h = React.createElement
+
+		/* Contact Form */
+		var ContactForm = React.createClass({
+    		propTypes: {
+    			value: React.PropTypes.object.isRequired,
+    			onChange: React.PropTypes.func.isRequired,
+    			onSubmit: React.PropTypes.func.isRequired
+    		},
+
+    		onNameChange: function(e) {
+    			this.props.onChange(Object.assign({}, this.props.value, {name: e.target.value}))
+    		},
+
+    		onEmailChange: function(e) {
+    			this.props.onChange(Object.assign({}, this.props.value, {email: e.target.value}))
+    		},
+
+    		onDescriptionChange: function(e) {
+    			this.props.onChange(Object.assign({}, this.props.value, {description: e.target.value}))
+    		},
+
+    		onSubmit: function(e) {
+    			e.preventDefault()
+    			this.props.onSubmit()
+    		},
+
+    		render: function() {
+    			var errors = this.props.value.errors || {}
+    			
+    			return (
+    				h('form', {className: 'ContactForm', onSubmit: this.onSubmit, noValidate: true}, 
+    					
+    					h('input', {
+    						type: 'text',
+    						className: errors.name && 'ContactForm-error',
+    						placeholder: 'Name (required)', 
+    						value: this.props.value.name,
+    						onChange: this.onNameChange,
+    					}),
+
+    					h('input', {
+    						type: 'email', 
+     						className: errors.email && 'ContactForm-error',   						
+    						placeholder: 'E-Mail Adress (required)', 
+    						value: this.props.value.email,
+    						onChange: this.onEmailChange
+    					}),
+
+    					h('input', {
+    						type: 'textarea', 
+    						placeholder: 'Description', 
+    						value: this.props.value.description,
+    						onChange: this.onDescriptionChange
+    					}),
+    					
+    					h('button', {type: 'submit'}, 'Add Contact')
+    					)
+    				)
+    		}
+    	})
+
+		/* Contact Item */
+		var ContactItem = React.createClass({
+			propTypes: {
+				name: React.PropTypes.string.isRequired,
+				email: React.PropTypes.string.isRequired,
+				description: React.PropTypes.string
+			},
+
+			render: function() {
+				return (
+					h('li', {className: 'ContactItem'},
+						h('h2', {className: 'ContactItem-name'}, this.props.name),
+						h('a', {className: 'ContactItem-email', href:'mailto'+this.props.email}, this.props.email),
+						h('div', {className: 'ContactItem-description'}, this.props.description)
+						)
+					)
+			}
+		})
+
+		/* Contact View */
+    	var ContactView = React.createClass({
+    		propTypes: {
+    			contacts: React.PropTypes.array.isRequired,
+    			newContact: React.PropTypes.object.isRequired,
+    			onNewContactChange: React.PropTypes.func.isRequired,
+    			onNewContactSubmit: React.PropTypes.func.isRequired
+    		},
+
+    		render: function() {
+	    		var contactItemElements = this.props.contacts
+					.filter(function(contact){ return contact.email })
+					.map(function(contact){ return h(ContactItem, contact) })
+
+				return (
+					h('div', {className: 'ContactView'},
+						h('h1', {className: 'ContactView-title'}, 'Contacts'),
+						h('ul', {className: 'ContactView-list'}, contactItemElements),
+						h(ContactForm, {
+							value: this.props.newContact,
+							onChange: this.props.onNewContactChange,
+							onSubmit: this.props.onNewContactSubmit
+						})
+					)
+				)
+    		},
+    	})
+
+    	/* Constants */
+    	var CONTACT_TEMPLATE = {name: "", email: "", description: "", errors: null}
+
+    	/* Actions */
+    	function updateNewContact (contact) {
+    		setState({ newContact: contact })
+    	}
+
+    	function submitNewContact (contact) {
+    		var contact = Object.assign({}, state.newContact, {key: state.contacts.length+1, errors: {}})
+
+    			if (!contact.name) {
+    				contact.errors.name = ["Pls enter a namerino"]
+    				console.log(contact.errors.name)
+    			}
+
+    			if (!/.+@.+\..+/.test(contact.email)) {
+    				contact.errors.email = ["Pls enter a valid emailerino"]
+    				console.log(contact.errors.email)
+    			}
+
+			    setState(
+			      Object.keys(contact.errors).length === 0
+			      ? {
+			          newContact: Object.assign({}, CONTACT_TEMPLATE),
+			          contacts: state.contacts.slice(0).concat(contact),
+			        }
+			      : { newContact: contact }
+			    )
+    	}
+
+    	/* Model */
+    	var state = {};
+
+    	// Render the new states on change
+    	function setState (changes) {
+    		Object.assign(state, changes)
+
+    		ReactDOM.render(
+    			h(ContactView, Object.assign({}, state, {
+    				onNewContactChange: updateNewContact,
+    				onNewContactSubmit: submitNewContact
+    			})),
+    			document.getElementById('react-app')
+    			);
+    	}
+
+    	// Initial Data
+    	setState({
+    		contacts: [
+    		    {key: 1, name: "Tümer Metin", email: "tumer@metin.com", description: "AZ Alkmar"},
+    			{key: 2, name: "Emre Belözoğlu", email: "emre@example.com", description: ":D"},
+    			{key: 3, name: "Alex de Souza", email:"alex@alex.com"},
+    			{key: 4, name: "Arda Touran", email:"bayrampasa@catalonia.com", description: "Dışarda abi çekiyoruz diye..."}
+    		],
+
+    		newContact: Object.assign({}, CONTACT_TEMPLATE)
+    	})
+	</script>
+
+</body>
+</html>
