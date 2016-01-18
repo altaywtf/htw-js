@@ -20,3 +20,13 @@ Then I've read the parts about Node, Express and MongoDB of [MEAN Machine](https
 
 ##Part Three
 Since I want to learn and build things with React, and MEAN Machine is doing the front-end jobs with Angular, I decided to skip rest of it for now.
+
+**The Guides & Resources**
+
+- [Introduction to React (Üstün Özgür, Turkish and English versions available)](https://www.youtube.com/watch?v=NSeurgO39Hk)
+
+- [React Workshop Videos (Üstun Özgur, Turkish)](https://www.youtube.com/playlist?list=PLC9XHh8X_kVJueSCNIp5ta_PcfOHpFKmO)
+
+- [react-howto (Pete Hunt)](https://github.com/petehunt/react-howto)
+
+- [Learn Raw React Series (James K Nelson)](http://jamesknelson.com/learn-raw-react-no-jsx-flux-es6-webpack/)

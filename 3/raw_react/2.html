@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Raw React</title>
+</head>
+<body>
+	<div id="react-app"></div>
+
+	<script src="https://fb.me/react-0.14.6.js"></script>
+	<script src="https://fb.me/react-dom-0.14.6.js"></script>
+	
+	<script>
+		var contacts = [
+		{key: 1, name: 'Halit Ergenç', email: 'halit@ergenc.com'},
+		{key: 2, name: 'Tugay Kerimoğlu', email: 'tugay@rovers.com'}
+		]
+
+		var h = React.createElement
+
+		var listElements = contacts
+			.filter(function(contact) {return contact.email})
+			.map(function(contact) {
+				return h('li', {key: contact.key}, 
+					h('h2', {}, contact.name),
+					h('a', {href:'mailto:'+'contact.email'}, contact.email)
+					)
+			})
+
+		var rootElement = 
+			h('div', {}, 
+				h('h1', {}, 'Contacts'),
+				h('ul', {}, listElements)
+			)
+
+		ReactDOM.render(rootElement, document.getElementById('react-app'))
+	</script>
+
+</body>
+</html>

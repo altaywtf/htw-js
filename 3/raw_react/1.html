@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Raw React</title>
+</head>
+<body>
+	<div id="react-app"></div>
+
+	<script src="https://fb.me/react-0.14.6.js"></script>
+	<script src="https://fb.me/react-dom-0.14.6.js"></script>
+	
+	<script>
+		var h = React.createElement;
+		var rootElement = h('div', {}, 
+			h('h1', {}, 'Contacts'),
+			h('ul', {}, 
+				h('li', {},
+					h('h2', {}, 'Halit Ergenç'),
+					h('a', {href: 'mailto:halit@ergenc.com'}, 'halit@ergenc.com')
+				),
+				h('li', {},
+					h('h2', {}, 'Arda Turan'),
+					h('a', {href: 'mailto:arda@turan.com'}, 'arda@turan.com')
+				)
+			)
+		);
+
+		ReactDOM.render(rootElement, document.getElementById('react-app'));
+	</script>
+
+</body>
+</html>

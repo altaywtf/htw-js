@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Raw React</title>
+</head>
+<body>
+	<div id="react-app"></div>
+
+	<script src="https://fb.me/react-0.14.6.js"></script>
+	<script src="https://fb.me/react-dom-0.14.6.js"></script>
+	
+	<script>
+		var h = React.createElement
+
+		var contacts = [
+    		{key: 1, name: "James K Nelson", email: "james@jamesknelson.com", description: "Front-end Unicorn"},
+    		{key: 2, name: "Jim", email: "jim@example.com"},
+    		{key: 3, name: "Joe"},
+    	]
+
+		var ContactItem = React.createClass({
+			propTypes: {
+				name: React.PropTypes.string.isRequired,
+			},
+
+			render: function() {
+				return (
+					h('li', {className: 'Contact'},
+						h('h2', {className: 'Contact-name'}, this.props.name),
+						h('a', {href:'mailto'+this.props.email}, this.props.email),
+						h('p', {}, this.props.description)
+						)
+					)
+			}
+		});
+
+		var contactItemElements = contacts
+			.filter(function(contact){return contact.email})
+			.map(function(contact){return h(ContactItem, contact)})
+
+		var rootElement = 
+			h('div', {},
+				h('h1', {}, 'Contacts'),
+				h('ul', {}, contactItemElements)
+				)
+
+		ReactDOM.render(rootElement, document.getElementById('react-app'))
+
+	</script>
+
+</body>
+</html>
