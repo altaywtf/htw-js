@@ -8,8 +8,6 @@
 
 ---
 
-##Studies
-
 ###Part One
 I started to my journey by reading the first six parts of [Eloquent Javascript](http://eloquentjavascript.net/) by Marijn Haverbeke.
 
@@ -41,7 +39,7 @@ Since I want to learn and build things with React, and MEAN Machine is doing the
 
 ---
 
-###Useful Tools
+###Some Useful Tools
 - [Sublime Text - JS Snippets](https://packagecontrol.io/packages/JavaScript%20%26%20NodeJS%20Snippets) for Javascript & NodeJS snippets.
 - [Sublime Text - Babel](https://packagecontrol.io/packages/Babel) for ES6 syntax, color scheme.
 - [Sublime Text - Babel Snippets](https://packagecontrol.io/packages/Babel%20Snippets) for React snippets.
