@@ -1,5 +1,6 @@
 import React from 'react'
 import ajax from 'superagent'
+import { IndexLink, Link } from 'react-router'
 
 class User extends React.Component {
 
@@ -24,6 +25,7 @@ class User extends React.Component {
 	render() {
 		return (
 			<div>
+			<p>You are here: <IndexLink to="/" activeClassName="active">Home</IndexLink> > {this.props.params.user}</p>
 				<ul>
 			        {this.state.events.map((event, index) => {
 			            const eventType = event.type

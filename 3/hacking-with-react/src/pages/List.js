@@ -1,10 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { IndexLink, Link } from 'react-router'
 
 class List extends React.Component {
 	render() {
 		return (
 			<div>
+				<p>You are here: <IndexLink to="/" activeClassName="active">Home</IndexLink></p>
 				<p>Pls chose a repo</p>
 				<ul>
                 	<li><Link to="/detail/react">React</Link></li>
