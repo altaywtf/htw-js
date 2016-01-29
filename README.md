@@ -33,19 +33,19 @@
 
 **Readings**
 - [Official React Tutorial](https://facebook.github.io/react/docs/tutorial.html) by Facebook
-- [Learn Raw React (Blog Post Series)](http://jamesknelson.com/learn-raw-react-no-jsx-flux-es6-webpack/) by James K Nelson
-- [Hacking With React (Book)](http://www.hackingwithreact.com/) by Paul Hudson
-- [Survive JS (Book)](http://survivejs.com/) by Juho Vepsäläinen
+- [Learn Raw React](http://jamesknelson.com/learn-raw-react-no-jsx-flux-es6-webpack/) by James K Nelson
+- [Hacking With React](http://www.hackingwithreact.com/) by Paul Hudson
+- [Survive JS](http://survivejs.com/) by Juho Vepsäläinen
 
 **Videos**
-- [Introduction to React (Video)](https://www.youtube.com/watch?v=NSeurgO39Hk) by Üstün Özgür
-- [React Workshop (Video, Screen Recording)](https://www.youtube.com/playlist?list=PLC9XHh8X_kVJueSCNIp5ta_PcfOHpFKmO) by Üstün Özgür
+- [Introduction to React](https://www.youtube.com/watch?v=NSeurgO39Hk) by Üstün Özgür
+- [React Workshop](https://www.youtube.com/playlist?list=PLC9XHh8X_kVJueSCNIp5ta_PcfOHpFKmO) by Üstün Özgür
 
 **Exercises**
 - [Raw React](3/raw-react)
 - [Official Tutorial](3/react-official-tutorial)
 - [Hacking With React](3/hacking-with-react)
-- I've also wrote [bilgi-shuttle-webapp](https://github.com/zebrasinpyjamas/bilgi-shuttle-webapp) with React, during this part of my study.
+- I've also written [bilgi-shuttle-webapp](https://github.com/zebrasinpyjamas/bilgi-shuttle-webapp) with React, during this part of my study.
 
 ---
 
