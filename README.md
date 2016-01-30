@@ -35,7 +35,7 @@
 - [Official React Tutorial](https://facebook.github.io/react/docs/tutorial.html) by Facebook
 - [Learn Raw React](http://jamesknelson.com/learn-raw-react-no-jsx-flux-es6-webpack/) by James K Nelson
 - [Hacking With React](http://www.hackingwithreact.com/) by Paul Hudson
-- [Survive JS](http://survivejs.com/) by Juho Vepsäläinen
+- [Survive JS](http://survivejs.com/) by Juho Vepsäläinen (in Progress)
 
 **Videos**
 - [Introduction to React](https://www.youtube.com/watch?v=NSeurgO39Hk) by Üstün Özgür
@@ -45,6 +45,7 @@
 - [Raw React](3/raw-react)
 - [Official Tutorial](3/react-official-tutorial)
 - [Hacking With React](3/hacking-with-react)
+- [Kanban App](3/survive-js/kanban_App) (in Progress)
 - I've also written [bilgi-shuttle-webapp](https://github.com/zebrasinpyjamas/bilgi-shuttle-webapp) with React, during this part of my study.
 
 ##Part Four: React Native
@@ -52,8 +53,12 @@
 **Readings**
 - [Official React Native Tutorial](https://facebook.github.io/react-native/docs/tutorial.html#content)
 
+**Videos**
+- [React Native Fundamentals](https://egghead.io/series/react-native-fundamentals) by [egghead.io](https://egghead.io/) (in Progress)
+
 **Exercises**
 - [Official Tutorial](4/AwesomeProject)
+- [GitHub Notetaker](4/githubNotetaker) (in Progress)
 
 ---
 
