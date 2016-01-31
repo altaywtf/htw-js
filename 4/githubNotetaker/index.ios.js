@@ -14,10 +14,18 @@ import React, {
 
 import Main from './App/Components/Main';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
 class githubNotetaker extends Component {
   render() {
     return (
       <NavigatorIOS
+        titleTextColor='#000'
+        tintColor='#000'
         style={styles.container}
         initialRoute={{
           title: 'Github Note Taker',
@@ -26,12 +34,5 @@ class githubNotetaker extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#111111'
-  },
-});
 
 AppRegistry.registerComponent('githubNotetaker', () => githubNotetaker);

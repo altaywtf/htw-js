@@ -8,9 +8,9 @@ class List extends React.Component {
 				<p>You are here: <IndexLink to="/" activeClassName="active">Home</IndexLink></p>
 				<p>Pls chose a repo</p>
 				<ul>
-                	<li><Link to="/detail/react">React</Link></li>
-                	<li><Link to="/detail/react-native">React Native</Link></li>
-                	<li><Link to="/detail/jest">Jest</Link></li>
+          <li><Link to="/detail/react">React</Link></li>
+          <li><Link to="/detail/react-native">React Native</Link></li>
+          <li><Link to="/detail/jest">Jest</Link></li>
 				</ul>
 			</div>
 		)

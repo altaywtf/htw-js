@@ -1,7 +1,4 @@
-'use strict';
-
-import React from 'react-native';
-import {
+import React, {
 	View,
 	Text,
 	StyleSheet,
@@ -20,39 +17,47 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC'
+    backgroundColor: '#212121'
   },
   title: {
-    marginBottom: 20,
-    fontSize: 25,
+    marginBottom: 50,
+    fontSize: 24,
     textAlign: 'center',
     color: '#fff'
   },
+  error: {
+  	fontSize: 16,
+  	color: '#fff',
+  	textAlign: 'center',
+  },
   searchInput: {
     height: 50,
-    padding: 4,
-    marginRight: 5,
-    fontSize: 23,
+    width: 300,
+    padding: 10,
+    fontSize: 18,
+    marginBottom: 10,
     borderWidth: 1,
     borderColor: 'white',
     borderRadius: 8,
-    color: 'white'
+    color: 'white',
+    alignSelf: 'center',
   },
   buttonText: {
     fontSize: 18,
-    color: '#111',
+    color: '#212121',
     alignSelf: 'center'
   },
   button: {
-    height: 45,
+    height: 50,
+    width: 200,
     flexDirection: 'row',
     backgroundColor: 'white',
     borderColor: 'white',
     borderWidth: 1,
     borderRadius: 8,
-    marginBottom: 10,
+    marginBottom: 20,
     marginTop: 10,
-    alignSelf: 'stretch',
+    alignSelf: 'center',
     justifyContent: 'center'
   },
 });
@@ -86,7 +91,7 @@ export default class Main extends React.Component {
 			 .then((res) => {
 			 	if(res.message === 'Not Found') {
 			 		this.setState({
-			 			error: 'User not found',
+			 			error: 'User not found :(',
 			 			isLoading: false
 			 		});
 			 	} else {
@@ -106,6 +111,10 @@ export default class Main extends React.Component {
 	}
 
 	render() {
+		const showErr = (
+			this.state.error ? <Text style={styles.error}> {this.state.error} </Text> : <View></View>
+		);
+
 		return (
 			<View style={styles.mainContainer}>
 				<Text style={styles.title}> Search for a GitHub User </Text>
@@ -119,6 +128,12 @@ export default class Main extends React.Component {
 					underlayColor="white">
 					<Text style={styles.buttonText}> SEARCH </Text>
 				</TouchableHighlight>
+				<ActivityIndicatorIOS
+					animating={this.state.isLoading}
+					color='#FFF'
+					size='large'>
+				</ActivityIndicatorIOS>
+				{showErr}
 			</View>
 		);
 	}
