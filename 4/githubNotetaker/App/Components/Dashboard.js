@@ -8,6 +8,7 @@ import React, {
 
 import Profile from './Profile';
 import Repositories from './Repositories';
+import Notes from './Notes';
 
 import api from '../Utils/Api';
 
@@ -70,7 +71,18 @@ export default class Dashboard extends React.Component {
   }
 
   goToNotes() {
-    console.log('going to notes');
+    api.getNotes(this.props.userInfo.login)
+      .then((res) => {
+        res = res || {};
+        this.props.navigator.push({
+          component: Notes,
+          title: 'Notes',
+          passProps: {
+            notes: res,
+            userInfo: this.props.userInfo
+          }
+        })
+      })
   }
 
 	render() {
@@ -82,24 +94,23 @@ export default class Dashboard extends React.Component {
           onPress={this.goToProfile.bind(this)}
           style={this.makeBackground(0)}
           underlaycolor='#88D4f5'>
-          <Text style={styles.buttonText}> View Profile </Text>
+          <Text style={styles.buttonText}> Profile </Text>
         </TouchableHighlight>
 
         <TouchableHighlight
           onPress={this.goToRepos.bind(this)}
           style={this.makeBackground(1)}
           underlaycolor='#88D4f5'>
-          <Text style={styles.buttonText}> Go to Repos </Text>
+          <Text style={styles.buttonText}> Repositories </Text>
         </TouchableHighlight>
 
         <TouchableHighlight
           onPress={this.goToNotes.bind(this)}
           style={this.makeBackground(2)}
           underlaycolor='#88D4f5'>
-          <Text style={styles.buttonText}> Go to Notes </Text>
+          <Text style={styles.buttonText}> Notes </Text>
         </TouchableHighlight>
 				
-        <Text>{this.props.userInfo.avatar_url}</Text>
 			</View>
 		);
 	}

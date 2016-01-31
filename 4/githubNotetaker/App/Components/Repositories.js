@@ -8,6 +8,7 @@ import React, {
 
 import Badge from './Badge';
 import Seperator from './Helpers/Seperator';
+import Web from './Helpers/Web';
 
 const styles = StyleSheet.create({
   container: {
@@ -39,7 +40,11 @@ const styles = StyleSheet.create({
 export default class Repositories extends React.Component {
 
 	openPage(url){
-		console.log('the url is', url);
+		this.props.navigator.push({
+			component: Web,
+			title: 'Web View',
+			passProps: {url}
+		})
 	}
 
 	render() {

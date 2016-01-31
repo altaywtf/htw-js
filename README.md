@@ -54,11 +54,11 @@
 - [Official React Native Tutorial](https://facebook.github.io/react-native/docs/tutorial.html#content)
 
 **Videos**
-- [React Native Fundamentals](https://egghead.io/series/react-native-fundamentals) by [egghead.io](https://egghead.io/) (in Progress)
+- [React Native Fundamentals](https://egghead.io/series/react-native-fundamentals) by [egghead.io](https://egghead.io/).
 
 **Exercises**
 - [Official Tutorial](4/AwesomeProject)
-- [GitHub Notetaker](4/githubNotetaker) (in Progress)
+- [GitHub Notetaker](4/githubNotetaker)
 
 ---
 
