@@ -59,7 +59,7 @@
 **Exercises**
 - [Official Tutorial](4/AwesomeProject)
 - [GitHub Notetaker](4/githubNotetaker)
-- [AsyncStorageTest](4/AsyncStorageTest)
+- [AsyncStorageDemo](4/AsyncStorageDemo)
 - I've also written [bilgi-shuttle-ios](https://github.com/zebrasinpyjamas/bilgi-shuttle-ios) with React Native, during this part of my study
 
 ---
