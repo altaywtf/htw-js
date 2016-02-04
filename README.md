@@ -9,11 +9,11 @@
 ##Part One: Fundamentals
 
 **Readings**
-- [Eloquent Javascript](http://eloquentjavascript.net/) by Marijn Haverbeke.
-- [Modern Javascript](http://www.dr.com.tr/Kitap/Modern-JavaScript/Fatih-Kadir-Akin/Egitim-Basvuru/Bilgisayar/urunno=0000000431839) by Fatih Kadir Akın.
+- [Eloquent Javascript](http://eloquentjavascript.net/) by Marijn Haverbeke
+- [Modern Javascript](http://www.dr.com.tr/Kitap/Modern-JavaScript/Fatih-Kadir-Akin/Egitim-Basvuru/Bilgisayar/urunno=0000000431839) by Fatih Kadir Akın
 
 **Videos**
-- [Introduction to EcmaScript 6](https://www.youtube.com/watch?v=SlrirWY9JTk) by Üstün Özgür.
+- [Introduction to EcmaScript 6](https://www.youtube.com/watch?v=SlrirWY9JTk) by Üstün Özgür
 
 **Exercises**
 - [Eloquent JS](1/eloquent-js)
@@ -22,8 +22,8 @@
 ##Part Two: Node
 
 **Readings**
-- [The Art of Node](https://github.com/maxogden/art-of-node#) by Max Ogden.
-- [MEAN Machine](https://leanpub.com/mean-machine) by [scotch.io](http://scotch.io) team.
+- [The Art of Node](https://github.com/maxogden/art-of-node#) by Max Ogden
+- [MEAN Machine](https://leanpub.com/mean-machine) by [scotch.io](http://scotch.io) team
 
 **Exercises**
 - [LearnYouNode](2/node/learnyounode)
@@ -46,7 +46,7 @@
 - [Official Tutorial](3/react-official-tutorial)
 - [Hacking With React](3/hacking-with-react)
 - [Kanban App](3/survive-js/kanban_App) (in Progress)
-- I've also written [bilgi-shuttle-webapp](https://github.com/zebrasinpyjamas/bilgi-shuttle-webapp) with React, during this part of my study.
+- I've also written [bilgi-shuttle-webapp](https://github.com/zebrasinpyjamas/bilgi-shuttle-webapp) with React, during this part of my study
 
 ##Part Four: React Native
 
@@ -54,15 +54,17 @@
 - [Official React Native Tutorial](https://facebook.github.io/react-native/docs/tutorial.html#content)
 
 **Videos**
-- [React Native Fundamentals](https://egghead.io/series/react-native-fundamentals) by [egghead.io](https://egghead.io/).
+- [React Native Fundamentals](https://egghead.io/series/react-native-fundamentals) by [egghead.io](https://egghead.io/)
 
 **Exercises**
 - [Official Tutorial](4/AwesomeProject)
 - [GitHub Notetaker](4/githubNotetaker)
+- [AsyncStorageTest](4/AsyncStorageTest)
+- I've also written [bilgi-shuttle-ios](https://github.com/zebrasinpyjamas/bilgi-shuttle-ios) with React Native, during this part of my study
 
 ---
 
 ###Some Useful Tools
-- [Sublime Text - JS Snippets](https://packagecontrol.io/packages/JavaScript%20%26%20NodeJS%20Snippets) for Javascript & NodeJS snippets.
-- [Sublime Text - Babel](https://packagecontrol.io/packages/Babel) for ES6 syntax, color scheme.
-- [Sublime Text - Babel Snippets](https://packagecontrol.io/packages/Babel%20Snippets) for React snippets.
+- [Sublime Text - JS Snippets](https://packagecontrol.io/packages/JavaScript%20%26%20NodeJS%20Snippets) for Javascript & NodeJS snippets
+- [Sublime Text - Babel](https://packagecontrol.io/packages/Babel) for ES6 syntax, color scheme
+- [Sublime Text - Babel Snippets](https://packagecontrol.io/packages/Babel%20Snippets) for React snippets
