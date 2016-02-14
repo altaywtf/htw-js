@@ -12,7 +12,7 @@ import React, {
   View
 } from 'react-native';
 
-const baseURL = 'http://localhost:8000/';
+const baseURL = 'http://bilgishuttle.herokuapp.com/';
 const dbVersion_KEY = '@AsyncStorageDemo:dbVersion';
 const data_KEY = '@AsyncStorageDemo:data';
 
