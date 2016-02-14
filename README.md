@@ -64,6 +64,7 @@
 
 
 ##Part Five: Angular2
+- [Angular2-Quickstart](5/angular2-quickstart)
 
 ---
 
