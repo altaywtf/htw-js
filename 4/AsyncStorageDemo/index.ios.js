@@ -30,7 +30,7 @@ class AsyncStorageDemo extends Component {
     }
   }
 
-  // WORKING PART ----------------------------------------- // 
+  // WORKING PART ----------------------------------------- //
   componentWillMount() {
 
     // TESTING TESTING //
@@ -38,7 +38,7 @@ class AsyncStorageDemo extends Component {
       // AsyncStorage.removeItem(data_KEY);
       // AsyncStorage.setItem(dbVersion_KEY, '1');
     // -------------- //
-     
+
     AsyncStorage.getItem(dbVersion_KEY).then((value) => {
       // if db.version is null (new installed app)
       if(!value) {
@@ -54,7 +54,7 @@ class AsyncStorageDemo extends Component {
         // do the job!
         this.updateDatabaseVersion();
         this.updateData();
-      } 
+      }
       // if db.version is not null (we have a database!)
       else {
         // display current data
@@ -78,7 +78,7 @@ class AsyncStorageDemo extends Component {
         if(currentDatabaseVersion < res.database_version.version_number){
             console.log('THIS DB IS OLD!');
             this.updateDatabaseVersion();
-            this.updateData();   
+            this.updateData();
         } else {
           console.log('DB UP TO DATE!');
           this.setState({dbVersion: res.database_version});
@@ -117,7 +117,7 @@ class AsyncStorageDemo extends Component {
       .done();
   }
   // ----------------------------------------------------- //
-  
+
   // Experimental Part //
   goToRoutePage(route) {
     console.log('goToRoutePage', this.state.data);
