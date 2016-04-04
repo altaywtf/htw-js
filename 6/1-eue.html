@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>d3 Exercises - Enter, Update, Exit</title>
+	
+	<script src="lib/d3.min.js"></script>
+</head>
+
+<body>
+	<button onClick="update()">Update</button>
+
+	<br><br>
+
+	<div id="d3"></div>
+	
+	<script type="text/javascript">
+	var data = [10, 15];
+	var data2 = [10,15,20,25,30];
+
+	function enter() {
+		d3.select('#d3')
+			.selectAll('div')
+			.data(data)
+			.enter()
+			.append('span')
+			.style({ 'display': 'inline-block', 'margin': '5px 5px 0 0', 'width': '50px', 'height': '50px', 'background': 'black'});
+	}
+
+	function update() {
+		d3.select('#d3')
+			.selectAll('div')
+			.data(data2)
+			.enter()
+			.append('span')
+			.style({ 'display': 'inline-block', 'margin': '5px 5px 0 0', 'width': '50px', 'height': '50px', 'background': 'yellow'});
+	}
+
+	enter();
+	// update();
+	</script>
+</body>
+
+</html>

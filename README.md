@@ -2,11 +2,11 @@
 
 > As a senior Mechanical Engineering student who wants to focus on web related areas after graduation, I decided to practice Javascript during my last half term as an undergraduate. 
 
-> I've been trying to learn some coding stuff since the beginning of 2015 and I have done several projects by using HTML, CSS, JQuery and Django. I also completed Javascript and AngularJS courses on Codecademy but since I didn't write JS in real life projects, I need lots of practice.
+> I've been trying to learn some coding stuff since the beginning of 2015 and I have done several projects by using HTML, CSS, JQuery and Django. I also completed Javascript and AngularJS courses on Codecademy but since I haven't write JS in ~~any~~ real life projects, I need lots of practice.
 
-> This repository contains the path I follow while trying to gain an intermediate understanding and knowledge of Javascript itself and modern tools/frameworks built with it.
+> This repository contains the path I follow while trying to gain an understanding and knowledge of the language itself and modern tools/frameworks built with it.
 
-> **UPDATE (01.04.2016)**: Since this repo was kind of beneficial for me and some of my friends who wanted to get started to JS and React during the past months, I decided to keep it updated till the end of this semester.
+> **UPDATE (01.04.2016)**: Since this repo was kind of beneficial for me and some of my friends who wanted to take a look at JS or React Ecosystem during the past months, I decided to keep it updated till the end of this semester.
 
 ##Part One: Fundamentals
 
@@ -72,10 +72,9 @@
 
 ---
 
-
 ##Part Five: Flux (with Redux)
+
 **Readings**
-- 
 
 **Videos**
 - [Introduction to Redux](https://egghead.io/series/getting-started-with-redux) by Dan Abramov
@@ -88,8 +87,21 @@
 
 ---
 
+##Part Six: d3
+**Readings**
+
+**Videos**
+
+**Exercises**
+
+---
+
 ###Some Useful Tools
 **Sublime Text Extensions**
 - [Sublime Text - JS Snippets](https://packagecontrol.io/packages/JavaScript%20%26%20NodeJS%20Snippets) for Javascript & NodeJS snippets
 - [Sublime Text - Babel](https://packagecontrol.io/packages/Babel) for ES6 syntax, color scheme
 - [Sublime Text - Babel Snippets](https://packagecontrol.io/packages/Babel%20Snippets) for React snippets
+
+**Atom Extensions**
+
+**Vim Extensions**

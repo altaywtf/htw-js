@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>D3 Example</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3-legend/1.1.0/d3-legend.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        
+    <style>
+
+      .axis text {
+        font-size: 12pt;
+      }
+      .axis .label {
+        font-size: 14pt;
+      }
+
+      .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="chart"></div>
+
+    <script>
+      var data = [
+        {
+          source: "Server",
+          count: 1,
+          data: 944112923
+        },
+        {
+          source: "Cache",
+          count: 1,
+          data: 544112923
+        },
+        {
+          source: "Cache",
+          count: 1,
+          data: 544112923
+        },
+          {
+          source: "Server",
+          count: 2,
+          data: 944112923
+        },
+        {
+          source: "Cache",
+          count: 2,
+          data: 544112923
+        },
+        {
+          source: "Peers",
+          count: 2,
+          data: 50053123
+        },
+          {
+          source: "Server",
+          count: 3,
+          data: 944112923
+        },
+        {
+          source: "Cache",
+          count: 3,
+          data: 544112923
+        },
+        {
+          source: "Peers",
+          count: 3,
+          data: 123324323
+        }
+      ]
+
+      var data2 = [
+      {
+        'count': 1,
+        'server': 123,
+        'cache': 0,
+        'peeer': 0
+      },
+      {
+        'count': 2,
+        'server': 503,
+        'cache': 51,
+        'peeer': 10
+      }
+      ]
+
+      var attrs = {
+        margin: 0,
+        width: '',
+        height: 250,
+
+        columns: {
+          x: 'count',
+          y: 'data',
+          color: 'source'
+        }
+      }
+
+      drawStackedAreaChart(data, attrs);
+
+      function drawStackedAreaChart(data, attrs) {
+
+        var target = '.chart';
+
+        if(attrs && attrs.margin) {
+          var margin = attrs.margin
+        } else {
+          var margin = 0;
+        }
+
+        if(attrs && attrs.width) {
+          var w = attrs.width - (margin*2);
+        } else {
+          var w = parseInt(d3.select(target).style('width'), 10) - (margin*2);
+        }
+
+        if(attrs && attrs.height) {
+          var h = attrs.height - (margin*2);
+        } else {
+          var h = 300 - (margin*2);
+        }
+
+        var xColumn = attrs.columns.x;
+        var yColumn = attrs.columns.y;
+        var colorColumn = attrs.columns.color;
+        var areaColumn = colorColumn;
+
+        var svg = d3.select(target)
+          .append('svg')
+          .attr('width', w)
+          .attr('height', h+100);
+
+        var g = svg.append('g')
+          .attr('transform', 'translate(' + margin + ',' + margin + ')');
+
+        var colorLegendG = svg.append("g")
+          .attr("class", "color-legend")
+          .attr("transform", "translate("+(20)+","+(h+20)+")");
+
+        var xScale = d3.scale.linear().range([0, w]);
+        var yScale = d3.scale.linear().range([h, 0]);
+        var colorScale = d3.scale.category20();
+
+        var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+          .ticks(0)
+          .outerTickSize(0);
+
+        var yAxis = d3.svg.axis().scale(yScale).orient("left")
+          .ticks(10)
+          .outerTickSize(0);
+
+        var stack = d3.layout.stack()
+          .y(function (d){ return d[yColumn]; })
+          .values(function (d){ return d.values; })
+          .offset("expand");
+
+        var area = d3.svg.area()
+          .x(function(d) { return xScale(d[xColumn]); })
+          .y0(function(d) { return yScale(d.y0); })
+          .y1(function(d) { return yScale(d.y0 + d.y); });
+      
+        var colorLegend = d3.legend.color()
+          .scale(colorScale)
+          .orient('horizontal')
+          .shapePadding(50)
+          .shapeWidth(20)
+          .shapeHeight(15)
+          .labelOffset(15);
+
+        var nested = d3.nest()
+          .key(function (d){ return d[areaColumn]; })
+          .entries(data);
+
+        colorScale.domain(nested.map(function (d){ return d.key; }));
+
+        console.log(nested);
+
+        var layers = stack(nested.reverse());
+
+        console.log(layers);
+
+        xScale.domain(d3.extent(data, function (d){ return d[xColumn]; }));
+        yScale.domain([
+          0,
+          d3.max(layers, function (layer){
+            return d3.max(layer.values, function (d){
+              return d.y0 + d.y;
+            });
+          })
+        ]);
+
+        var paths = g.selectAll(".chart-area").data(layers);
+          paths.enter().append("path").attr("class", "chart-line");
+          paths.exit().remove();
+          paths
+            .attr("d", function (d){ return area(d.values); })
+            .attr("fill", function (d){ return colorScale(d.key); });
+
+        colorLegendG.call(colorLegend);
+
+        svg.append("g")
+           .attr("class", "x axis")
+           .attr("transform", "translate(0," + h + ")")
+           .call(xAxis);
+
+        svg.append("g")
+           .attr("class", "y axis")
+           .call(yAxis);
+      }
+    
+
+    </script>
+  </body>
+</html>

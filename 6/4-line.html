@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>d3 Exercises</title>
+	<script src="lib/d3.min.js"></script>
+	<style> /* set the CSS */
+		body { font: 12px Arial;}
+
+		path { 
+		    stroke: steelblue;
+		    stroke-width: 2;
+		    fill: none;
+		}
+
+		.axis path,
+		.axis line {
+		    fill: none;
+		    stroke: grey;
+		    stroke-width: 1;
+		    shape-rendering: crispEdges;
+		}
+
+	</style>
+</head>
+
+<body>
+<div class="chart"></div>
+</body>
+
+<script>
+
+var data = [0, 600];
+
+var attrs = {
+	target: '.chart',
+	margin: 50,
+	width: '',
+	height: 300,
+	color: '',
+}
+
+drawLineChart(data, attrs);
+
+function drawLineChart(data, attrs) {
+
+	if(attrs.margin) {
+		var margin = attrs.margin;
+	} else {
+		var margin = 5;
+	}
+	
+	if(attrs.width) {
+		var w = attrs.width - (margin*2);
+	} else {
+		var w = parseInt(d3.select(attrs.target).style('width'), 10) - (margin*2);
+	}
+
+	if(attrs.height) {
+		var h = attrs.height - (margin*2);
+	} else {
+		var h = 200 - (margin*2);
+	}
+
+	if(attrs.ticks) {
+		var ticks = attrs.ticks;
+	} else {
+		var ticks = {
+			x: w*data.length/(20*margin),
+			y: w*data.length/(20*margin)
+		}
+	}
+
+	if(attrs.color) {
+		var color = attrs.color;
+	} else {
+		var color = "#151515";
+	}
+
+	var x = d3.scale.linear().range([0, w]);
+	var y = d3.scale.linear().range([h, 0]);
+
+	var xAxis = d3.svg.axis().scale(x)
+    						.orient("bottom")
+    						.ticks(ticks.x)
+
+	var yAxis = d3.svg.axis().scale(y)
+	    					.orient("left")
+	    					.ticks(ticks.y);
+
+	var line = d3.svg.line()
+										.interpolate("basis")
+	    							.x(function(d, i) { return x(i); })
+	    							.y(function(d) { return y(d); });
+    
+	var svg = d3.select(attrs.target)
+	    				.append("svg")
+	        		.attr("width", w + (margin*2))
+	        		.attr("height", h + (margin*2))
+	    				.append("g")
+	        		.attr("transform", "translate(" + margin + "," + margin + ")");
+
+
+  x.domain(d3.extent(data, function(d, i) { return i; }));
+  y.domain([0, d3.max(data, function(d) { return d; }) + margin]);
+
+  
+  svg.append("path")
+     .attr("class", "line")
+     .attr("d", line(data));
+
+  svg.append("g")
+     .attr("class", "x axis")
+     .attr("transform", "translate(0," + h + ")")
+     .call(xAxis);
+
+  svg.append("g")
+     .attr("class", "y axis")
+     .call(yAxis);
+}
+
+function removeChart(attrs) {
+	d3.select(attrs.target).selectAll('svg').remove();
+}
+
+
+</script>
+
+</html>

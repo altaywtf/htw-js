@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>d3 Exercises</title>
+	<script src="lib/d3.min.js"></script>
+	<style>
+		body {
+		  font: 10px sans-serif;
+		}
+
+
+		p {
+		  font: 12px helvetica;
+		}
+
+		.axis path, .axis line {
+		  fill: none;
+		  stroke: #000;
+		  stroke-width: 2px;
+		  shape-rendering: crispEdges;
+		}
+
+		button {
+		  position: absolute;
+		  right: 50px;
+		  top: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="chart" style="width: 100%"></div>
+</body>
+
+<script type="text/javascript">
+
+	var data = [
+		{key: 'cache', value: 0, count: 0},
+		{key: 'cache', value: 0, count: 1},
+		{key: 'cache', value: 5, count: 2},
+		{key: 'cache', value: 20, count: 3},
+		{key: 'cache', value: 30, count: 4},
+		{key: 'cache', value: 500, count: 5},
+		{key: 'cache', value: 10, count: 6},
+
+		{key: 'cache2', value: 0, count: 0},
+		{key: 'cache2', value: 5, count: 1},
+		{key: 'cache2', value: 5, count: 2},
+		{key: 'cache2', value: 0, count: 3},
+		{key: 'cache2', value: 0, count: 4},
+		{key: 'cache2', value: 10, count: 5},
+		{key: 'cache2', value: 0, count: 6},
+
+		{key: 'server', value: 450, count: 0},
+		{key: 'server', value: 500, count: 1},
+		{key: 'server', value: 255, count: 2},
+		{key: 'server', value: 355, count: 3},
+		{key: 'server', value: 50, count: 4},
+		{key: 'server', value: 50, count: 5},
+		{key: 'server', value: 50, count: 6},
+
+	]
+
+	var options = {
+		c: ['#43A047', "blue", "#F44336"],
+		w: 960,
+		h: 400
+	}
+
+	chart(data, options);
+
+	function chart(data, options) {
+
+		var colorrange = options.c;
+
+		var margin = {top: 20, right: 30, bottom: 20, left: 30};
+		var width = parseInt(d3.select('.chart').style('width'), 10) - margin.right - margin.left;
+		var height = options.h;
+
+		// For X Axis
+		var x = d3.scale.linear()
+		    .range([0, width]);
+
+		// For Y Axis
+		var y = d3.scale.linear()
+		    .range([height-10, 0]);
+
+		// For Colors
+		var z = d3.scale.ordinal()
+		    .range(colorrange);
+
+		// Draw X Axis
+		var xAxis = d3.svg.axis()
+		    .scale(x)
+		    .orient("bottom");
+
+		// Draw Y Axis (Left)
+		var yAxis = d3.svg.axis()
+		    .scale(y);
+
+		// Draw Y Axis (Right)
+		var yAxisr = d3.svg.axis()
+		    .scale(y);
+
+		// Initialize Stack Layout    
+		var stack = d3.layout.stack()
+									.offset("expand")
+		    					.values(function(d) { return d.values; })
+		    					.x(function(d) { return d.count; })
+		    					.y(function(d) { return d.value; });
+
+		var nest = d3.nest()
+		    				.key(function(d) { return d.key; });
+
+		var area = d3.svg.area()
+		    				 .interpolate("cardinal")
+		    				 .x(function(d)  { return x(d.count); })
+		    				 .y0(function(d) { return y(d.y0); })
+		    			 	 .y1(function(d) { return y(d.y0 + d.y); });
+
+		var svg = d3.select(".chart")
+								.append("svg")
+		    				.attr("width", width + margin.left + margin.right)
+		    				.attr("height", height + margin.top + margin.bottom)
+		  					.append("g")
+		   					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		var layers = stack(nest.entries(data));
+
+		x.domain(d3.extent(data, function(d) { return d.count; }));
+		y.domain([0, d3.max(data, function(d) { return d.y0 + d.y; })]);
+
+		svg.selectAll(".layer")
+		   .data(layers)
+		   .enter().append("path")
+		   .attr("class", "layer")
+		   .attr("d", function(d) { return area(d.values); })
+		   .style("fill", function(d, i) { return z(i); });
+
+		svg.append("g")
+		   .attr("class", "x axis")
+		   .attr("transform", "translate(0," + height + ")")
+		   .call(xAxis);
+
+		svg.append("g")
+		   .attr("class", "y axis")
+		   .attr("transform", "translate(" + width + ", 0)")
+		   .call(yAxis.orient("right"));
+
+		svg.append("g")
+		   .attr("class", "y axis")
+		   .call(yAxis.orient("left"));
+	}
+
+	function removeChart() {
+		d3.select('.chart').select('svg').remove();
+	}
+
+
+</script>
+
+</html>

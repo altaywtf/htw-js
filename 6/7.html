@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+</style>
+<body>
+<div class="chart"></div>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var data = [
+  {source: 'CDN', value: 0, count: '0'},
+
+  {source: 'Server', value: 5, count: '0'},
+
+  {source: 'Server', value: 10, count: '1'},
+  {source: 'CDN', value: 0, count: '1'},
+  
+  {source: 'Server', value: 15, count: '2'},
+  {source: 'CDN', value: 0, count: '2'},
+  
+  {source: 'Server', value: 15, count: '3'},
+  {source: 'CDN', value: 20, count: '3'},
+
+  {source: 'Server', value: 15, count: '4'},
+  {source: 'CDN', value: 25, count: '4'},
+
+  {source: 'Server', value: 15, count: '5'},
+  {source: 'CDN', value: 40, count: '5'},
+
+  {source: 'Server', value: 15, count: '6'},
+  {source: 'CDN', value: 40, count: '6'},
+
+  {source: 'Server', value: 15, count: '7'},
+  {source: 'CDN', value: 400, count: '7'},
+]
+
+var attrs = {
+  margin: 0,
+  width: '',
+  height: ''
+}
+
+drawStackedAreaChart(data, attrs);
+
+function drawStackedAreaChart(data, attrs) {
+
+  var target = '.chart';
+
+  var formatPercent = d3.format(".0%");
+
+  if(attrs && attrs.margin) {
+    var margin = attrs.margin;
+  } else {
+    var margin = 5;
+  }
+  
+  if(attrs && attrs.width) {
+    var w = attrs.width - (margin*2);
+  } else {
+    var w = parseInt(d3.select(target).style('width'), 10) - (margin*2);
+  }
+
+  if(attrs && attrs.height) {
+    var h = attrs.height - (margin*2);
+  } else {
+    var h = 200 - (margin*2);
+  }
+
+  var x = d3.scale.linear()
+    .range([0, w]);
+
+  var y = d3.scale.linear()
+    .range([h, 0]);
+
+  var z = d3.scale.category20();
+
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .ticks(0)
+    .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .ticks(0)
+    .tickFormat(formatPercent)
+    .orient("left");
+
+  var stack = d3.layout.stack()
+    .offset("expand")
+    .values(function(d) { return d.values; })
+    .x(function(d) { return d.count; })
+    .y(function(d) { return d.value; });
+
+  var nest = d3.nest()
+    .key(function(d) { return d.source; });
+
+  var area = d3.svg.area()
+      .interpolate("basis")
+      .x(function(d) { return x(d.count); })
+      .y0(function(d) { return y(d.y0); })
+      .y1(function(d) { return y(d.y0 + d.y); });
+
+  var svg = d3.select(target).append("svg")
+    .attr("width", w + (2*margin))
+    .attr("height", h + (2*margin))
+  .append("g")
+    .attr("transform", "translate(" + margin + "," + margin + ")");
+
+  var layers = stack(nest.entries(data));
+
+  x.domain(d3.extent(data, function(d) { return d.count; }));
+  y.domain([0, d3.max(data, function(d) { return d.y0 + d.y; })]);
+
+  svg.selectAll(".layer")
+      .data(layers)
+    .enter().append("path")
+      .attr("class", "layer")
+      .attr("d", function(d) { return area(d.values); })
+      .style("fill", function(d, i) { return z(i); });
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + h + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+}
+
+</script>

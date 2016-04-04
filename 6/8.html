@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #151515;
+  stroke-opacity: .6;
+}
+
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var graph = {
+  nodes: [
+    {"name":"Me","group":0, "radius": 50, "x": 100, "y": 120},
+    {"name":"Seeding Peer I","group":1, "radius":10, "x": 100, "y": 120},
+    {"name":"Seeding Peer II","group":1, "radius":10, "x": 120, "y": 50},
+    {"name":"Fetcing Peer I","group":2, "radius":10, "x": 130, "y": 500},
+    {"name":"Fetcing Peer II","group":2, "radius":10, "x": 120, "y": 120}
+  ],
+  links: [
+    {"source":1,"target":0,"value":1},
+    {"source":2,"target":0,"value":1},
+    {"source":3,"target":0,"value":1},
+    {"source":4,"target":0,"value":1}
+  ]
+}
+
+var width = 1280,
+    height = 500;
+
+var color = d3.scale.category10();
+
+var force = d3.layout.force()
+    .size([width, height])
+    .charge(-400)
+    .linkDistance(150)
+    .on("tick", tick);
+
+var drag = force.drag()
+    .on("dragstart", dragstart);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", function(d) { return d.radius; })
+      .style("fill", function(d) { return color(d.group); })
+      .call(drag);
+
+function tick() {
+  link.attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+
+  node.attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+}
+
+function dragstart(d) {
+  d3.select(this).classed("fixed", d.fixed = true);
+}
+
+</script>

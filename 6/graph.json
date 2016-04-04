@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    {"x": 480, "y": 250, "group": 0, "radius": 50},
+    {"x": 240, "y": 250, "group": 1, "radius": 5},
+    {"x": 720, "y": 250, "group": 2, "radius": 5}
+  ],
+  "links": [
+    {"source":  1, "target":  0},
+    {"source":  2, "target":  0}
+  ]
+}
