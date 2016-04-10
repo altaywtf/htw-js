@@ -84,7 +84,8 @@ function drawStackedAreaChart(data, attrs) {
   var y = d3.scale.linear()
     .range([h, 0]);
 
-  var z = d3.scale.category20();
+  var z = d3.scale.ordinal()
+        .range(["#1565C0", "#E53935"]);
 
   var xAxis = d3.svg.axis()
     .scale(x)

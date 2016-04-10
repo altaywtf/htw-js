@@ -6,7 +6,7 @@
 
 > This repository contains the path I follow while trying to gain an understanding and knowledge of the language itself and modern tools/frameworks built with it.
 
-> **UPDATE (01.04.2016)**: Since this repo was kind of beneficial for me and some of my friends who wanted to take a look at JS or React Ecosystem during the past months, I decided to keep it updated till the end of this semester.
+> **UPDATE (01.04.2016)**: Since this repo was kind of beneficial for me and some of my friends who wanted to take a look at JS or React Ecosystem during the past months, I decided to keep it updated till the end of this semester. You can also check [this repository](https://github.com/altayaydemir/ephas) for the some of the problems (and their solutions) I've dealt during these works.
 
 ##Part One: Fundamentals
 
@@ -89,19 +89,11 @@
 
 ##Part Six: d3
 **Readings**
-
-**Videos**
+- [d3 Tutorials](http://alignedleft.com/tutorials/d3/) by Scott Murray
+- [Integrating d3 with React](http://nicolashery.com/integrating-d3js-visualizations-in-a-react-app/)
 
 **Exercises**
+- [Baby Steps](6)
+- I've also written [d3-within-react](https://github.com/altayaydemir/d3-within-react) during this part of my study
 
 ---
-
-###Some Useful Tools
-**Sublime Text Extensions**
-- [Sublime Text - JS Snippets](https://packagecontrol.io/packages/JavaScript%20%26%20NodeJS%20Snippets) for Javascript & NodeJS snippets
-- [Sublime Text - Babel](https://packagecontrol.io/packages/Babel) for ES6 syntax, color scheme
-- [Sublime Text - Babel Snippets](https://packagecontrol.io/packages/Babel%20Snippets) for React snippets
-
-**Atom Extensions**
-
-**Vim Extensions**
