@@ -52,7 +52,9 @@
 - [Official Tutorial](3/react-official-tutorial)
 - [Hacking With React](3/hacking-with-react)
 - [Kanban App](3/survive-js/kanban_App) (in Progress)
-- I've also written [bilgi-shuttle-webapp](https://github.com/bilgishuttle/bilgi-shuttle-web) with React, during this part of my study
+
+**Projects**
+- [bilgi-shuttle-webapp](https://github.com/bilgishuttle/bilgi-shuttle-web)
 
 ---
 
@@ -68,22 +70,31 @@
 - [Official Tutorial](4/AwesomeProject)
 - [GitHub Notetaker](4/githubNotetaker)
 - [AsyncStorageDemo](4/AsyncStorageDemo)
-- I've also written [bilgi-shuttle-ios](https://github.com/bilgishuttle/bilgi-shuttle-ios) and [bilgi-shuttle-android](https://github.com/bilgishuttle/bilgi-shuttle-android) with React Native, during this part of my study
+
+**Projects**
+- [bilgi-shuttle-ios](https://github.com/bilgishuttle/bilgi-shuttle-ios)
+- [bilgi-shuttle-android](https://github.com/bilgishuttle/bilgi-shuttle-android)
 
 ---
 
 ##Part Five: Flux (with Redux)
 
 **Readings**
+- [Why does React emphasize on unidirectional data flow and Flux architecture?](https://hashnode.com/post/why-does-react-emphasize-on-unidirectional-data-flow-and-flux-architecture-ciibz8ej600n2j3xtxgc0n1f0#ciibz8qqt01rjj3xt97v8t8in)
+- [Step by Step Guide For Building React/Redux Apps](https://medium.com/@rajaraodv/step-by-step-guide-to-building-react-redux-apps-using-mocks-48ca0f47f9a#.mxhn9gk6e)
 
 **Videos**
 - [Introduction to Redux](https://egghead.io/series/getting-started-with-redux) by Dan Abramov
 - [Modern React with Redux](https://www.udemy.com/react-redux/) by Stephen Grider
+- [Advanced React with Redux](https://www.udemy.com/react-redux-tutorial/) by Stephen Grider
 
 **Exercises**
 - [Book List](5/redux-book-list)
 - [Weather Forecast](5/redux-weather-forecast)
-- I've also written [WebPageTestrr](https://github.com/altayaydemir/WebPageTestrr) with React+Redux, during this part of my study
+- [TDD Comments App](5/tdd-comments)
+
+**Projects**
+- [WebPageTestrr](https://github.com/altayaydemir/WebPageTestrr)
 
 ---
 
@@ -94,6 +105,8 @@
 
 **Exercises**
 - [Baby Steps](6)
-- I've also written [d3-within-react](https://github.com/altayaydemir/d3-within-react) during this part of my study
+
+**Projects**
+- [d3-within-react](https://github.com/altayaydemir/d3-within-react)
 
 ---

@@ -21,15 +21,14 @@ body {
 
 var data = [
   {source: 'CDN', value: 0, count: '0'},
+  {source: 'Server', value: 0, count: '0'},
 
-  {source: 'Server', value: 5, count: '0'},
+  {source: 'Server', value: 0, count: '1'},
+  {source: 'CDN', value: 0, count: '1'},
 
   {source: 'Server', value: 10, count: '1'},
-  {source: 'CDN', value: 0, count: '1'},
-  
-  {source: 'Server', value: 15, count: '2'},
-  {source: 'CDN', value: 0, count: '2'},
-  
+  {source: 'CDN', value: 10, count: '1'},
+ 
   {source: 'Server', value: 15, count: '3'},
   {source: 'CDN', value: 20, count: '3'},
 
@@ -99,7 +98,7 @@ function drawStackedAreaChart(data, attrs) {
     .orient("left");
 
   var stack = d3.layout.stack()
-    .offset("expand")
+    .offset("zero")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.count; })
     .y(function(d) { return d.value; });
