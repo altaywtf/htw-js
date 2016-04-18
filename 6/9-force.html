@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.chart {
+  border: 2px solid #ddd;
+}
+
+.link {
+  stroke: #151515;
+  stroke-width: 1px;
+}
+
+.node {
+  stroke: white;
+  stroke-width: 1px;
+}
+
+.node.fixed {
+  fill: #f00;
+}
+
+</style>
+<body>
+<button onClick="update()">Update</button>
+<div class="chart"></div>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var graph = {
+  nodes: [
+    {"group": 0, "radius": 5},
+    {"group": 1, "radius": 5},
+    {"group": 2, "radius": 5}
+  ],
+  links: [
+    {"source":  1, "target":  0},
+    {"source":  2, "target":  0}
+  ]
+}
+
+var target = ".chart";
+
+var w = parseInt(d3.select(target).style('width'), 10),
+    h = 360;
+
+
+(function () {
+  function assignCoordinates(nodes, values) {
+    var tmp = [];
+
+    nodes.forEach(function (node, i) {
+      switch(node.group) {
+        case 0:
+          node.x = values.w;
+          node.y = values.h;
+          tmp.push(node);
+          break;
+        case 1:
+          node.x = values.w/2;
+          node.y = Math.random();
+          tmp.push(node);
+          break;
+        case 2:
+          node.x = (3*values.w)/2;
+          node.y = Math.random();
+          tmp.push(node);
+          break;
+        }
+    });
+
+    return tmp;
+  }
+
+  var data = {
+    nodes: graph.nodes,
+    links: graph.links
+  }
+
+  var color = d3.scale.category10();
+
+  var force = d3.layout.force()
+      .size([w, h])
+      .linkDistance(150)
+      .on("tick", tick);
+
+  var svg = d3.select(target).append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+  var link = svg.selectAll(".link"),
+      node = svg.selectAll(".node");
+
+  force
+      .nodes(data.nodes)
+      .links(data.links)
+      .start();
+
+  link = link.data(data.links)
+    .enter().append("line")
+      .attr("class", "link");
+
+  node = node.data(data.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", function(d) { return d.radius; })
+      .style("fill", function(d) { return color(d.group); })
+      .call(force.drag);
+
+  function tick() {
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+  }
+})();
+
+
+function update() {
+  var graph = {
+    nodes: [
+      {"group": 0, "radius": 50},
+      {"group": 1, "radius": 10},
+      {"group": 2, "radius": 10},
+      {"group": 1, "radius": 20},
+      {"group": 2, "radius": 20}
+    ],
+    links: [
+      {"source":  1, "target":  0},
+      {"source":  2, "target":  0},
+      {"source":  3, "target":  0},
+      {"source":  4, "target":  0}
+    ]
+  }
+
+  function assignCoordinates(nodes, values) {
+    var tmp = [];
+
+    nodes.forEach(function (node, i) {
+      switch(node.group) {
+        case 0:
+          node.x = values.w;
+          node.y = values.h;
+          tmp.push(node);
+          break;
+        case 1:
+          node.x = values.w/2;
+          node.y = Math.random();
+          tmp.push(node);
+          break;
+        case 2:
+          node.x = (3*values.w)/2;
+          node.y = Math.random();
+          tmp.push(node);
+          break;
+        }
+    });
+
+    return tmp;
+  }
+
+  var data = {
+    nodes: graph.nodes,
+    links: graph.links
+  }
+
+  var color = d3.scale.category10();
+
+  var force = d3.layout.force()
+      .size([w, h])
+      .linkDistance(150)
+      .on("tick", tick);
+
+  var svg = d3.select(target).selectAll("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+  var link = svg.selectAll(".link"),
+      node = svg.selectAll(".node");
+
+  force
+      .nodes(data.nodes)
+      .links(data.links)
+      .start();
+
+  link = link.data(data.links)
+    //.enter().append("line")
+      .attr("class", "link");
+
+  node = node.data(data.nodes)
+    // .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", function(d) { return d.radius; })
+      .style("fill", function(d) { return color(d.group); })
+      .call(force.drag);
+
+  function tick() {
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+  }
+}
+
+</script>
