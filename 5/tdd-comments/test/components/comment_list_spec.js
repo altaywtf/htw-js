@@ -1,7 +1,7 @@
 import { renderComponent, expect } from '../test_helper';
 import CommentList from '../../src/components/comment_list';
 
-describe('description', function() {
+describe('CommentList', function() {
 	let component;
 
 	beforeEach(() => {
