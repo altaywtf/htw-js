@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>d3-workshop</title>
+	<script src="../lib/d3.min.js"></script>
+	<style>
+		.canvas {
+			border: 2px solid black;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="canvas"></div>
+
+	<script>
+
+		var opt = {
+			width: 200,
+			height: 200,
+			barWidth: 20
+		}
+
+		var canvas = d3.select('.canvas');
+	
+		var svg = canvas.append('svg')
+			.attr('class', 'graph')
+			.attr('width', opt.width)
+			.attr('height', opt.height);
+
+		var data = [3, 5, 20];
+
+		var barElems = svg.selectAll('.bar');
+
+		svg.data(data)
+			.enter()
+			.append('rect')
+			.attr('width', opt.barWidth)
+			.attr('height', function (d) {
+				return d;
+			})
+			.attr('y', function (d) {
+				return opt.height - d;
+			})
+			.attr('x', function (d, i) {
+				return 5;
+			})
+
+
+	</script>
+
+</body>
+</html>

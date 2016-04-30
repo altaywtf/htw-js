@@ -24,7 +24,7 @@
 <body>
 <button onClick="update()">Update</button>
 <div class="chart"></div>
-<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
 var graph = {
@@ -46,32 +46,6 @@ var w = parseInt(d3.select(target).style('width'), 10),
 
 
 (function () {
-  function assignCoordinates(nodes, values) {
-    var tmp = [];
-
-    nodes.forEach(function (node, i) {
-      switch(node.group) {
-        case 0:
-          node.x = values.w;
-          node.y = values.h;
-          tmp.push(node);
-          break;
-        case 1:
-          node.x = values.w/2;
-          node.y = Math.random();
-          tmp.push(node);
-          break;
-        case 2:
-          node.x = (3*values.w)/2;
-          node.y = Math.random();
-          tmp.push(node);
-          break;
-        }
-    });
-
-    return tmp;
-  }
-
   var data = {
     nodes: graph.nodes,
     links: graph.links
@@ -135,33 +109,7 @@ function update() {
       {"source":  4, "target":  0}
     ]
   }
-
-  function assignCoordinates(nodes, values) {
-    var tmp = [];
-
-    nodes.forEach(function (node, i) {
-      switch(node.group) {
-        case 0:
-          node.x = values.w;
-          node.y = values.h;
-          tmp.push(node);
-          break;
-        case 1:
-          node.x = values.w/2;
-          node.y = Math.random();
-          tmp.push(node);
-          break;
-        case 2:
-          node.x = (3*values.w)/2;
-          node.y = Math.random();
-          tmp.push(node);
-          break;
-        }
-    });
-
-    return tmp;
-  }
-
+  
   var data = {
     nodes: graph.nodes,
     links: graph.links
