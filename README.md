@@ -8,6 +8,8 @@
 
 > **UPDATE (01.04.2016)**: Since this repo was kind of beneficial for me and some of my friends who wanted to take a look at JS or React Ecosystem during the past months, I decided to keep it updated till the end of this semester. You can also check [this repository](https://github.com/altayaydemir/ephas) for the some of the problems (and their solutions) I've dealt during these works.
 
+> **UPDATE (04.06.2016)**: 
+
 ##Part One: Fundamentals
 
 **Readings**
@@ -51,7 +53,6 @@
 - [Raw React](3/raw-react)
 - [Official Tutorial](3/react-official-tutorial)
 - [Hacking With React](3/hacking-with-react)
-- [Kanban App](3/survive-js/kanban_App) (in Progress)
 
 **Projects**
 - [bilgi-shuttle-webapp](https://github.com/bilgishuttle/bilgi-shuttle-web)
@@ -85,6 +86,7 @@
 
 **Videos**
 - [Introduction to Redux](https://egghead.io/series/getting-started-with-redux) by Dan Abramov
+- [Building React Applications with Idiomatic Redux](https://egghead.io/series/building-react-applications-with-idiomatic-redux) by Dan Abramov
 - [Modern React with Redux](https://www.udemy.com/react-redux/) by Stephen Grider
 - [Advanced React with Redux](https://www.udemy.com/react-redux-tutorial/) by Stephen Grider
 
@@ -95,6 +97,10 @@
 
 **Projects**
 - [WebPageTestrr](https://github.com/altayaydemir/WebPageTestrr)
+- [Redux version of bilgi-shuttle-web](https://github.com/bilgishuttle/bilgi-shuttle-web/tree/develop)
+
+**Contributions**
+- [vortigern](https://github.com/barbar/vortigern/)
 
 ---
 
@@ -110,3 +116,14 @@
 - [d3-within-react](https://github.com/altayaydemir/d3-within-react)
 
 ---
+
+##Part Seven: Webpack
+**Readings**
+- [SurviveJS - Webpack](https://leanpub.com/survivejs-webpack) by Juho Vepsäläinen, Tobias Koppers and Jesús Rodríguez Rodríguez.
+- [wepack-howto](https://github.com/petehunt/webpack-howto) by Pete Hunt.
+
+---
+
+##Part Eight: Design Patterns
+**Videos**
+- [Practical Design Patterns in JavaScript](https://www.pluralsight.com/courses/javascript-practical-design-patterns) by Jonathan Mills

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.link {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.node {
+  fill: #000;   /* this is over-ridden by node.a (etc) below */
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+/* the class of the node determines its color */
+.node.0 { fill: #1f77b4; }
+.node.1 { fill: #ff7f0e; }
+.node.2 { fill: #2ca02c; }
+
+</style>
+<body>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>
+
+var width = 960,  // width and height of the SVG canvas 
+    height = 500;
+
+// A list of node objects.  We represent each node as {id: "name"}, but the D3
+// system will decorate the node with addtional fields, notably x: and y: for
+// the force layout and index" as part of the binding mechanism.
+var nodes = [];
+
+// A list of links.  We represent a link as {source: <node>, target: <node>},
+// and in fact, the force layout mechanism expects those names.  
+links = [];
+
+// Create the force layout.  After a call to force.start(), the tick method will
+// be called repeatedly until the layout "gels" in a stable configuration.
+var force = d3.layout.force()
+    .nodes(nodes)
+    .links(links)
+    .linkDistance(100)
+    .size([width, height])
+    .on("tick", tick);
+
+// add an SVG element inside the DOM's BODY element
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+function update_graph() {
+
+    // First update the links...
+
+    // The call to <selection>.data() gets the link objects that need updating
+    // and associates them with the corresponding DOM elements, in this case,
+    // SVG line elements.  The first argument, force.links() simply returns our
+    // links[] array.  The second argument is a function that produces a unique
+    // and invariate identifier for each link.  This makes it possible for D3 to
+    // correctly associate each link object with each line element in the DOM,
+    // even if the link object moves around in memory.
+    // 
+    // link_update, in addition to processing objects that need updating,
+    // defines two custom methods, .enter() and .exit(), that refer to link
+    // objects that are newly added and that have been deleted (respectively).
+    // See below to see how these methods are used.
+    var link_update = svg.selectAll(".link").data(
+        force.links(), 
+        function(d) { console.log(d); return d.source.id + "-" + d.target.id; }
+    );
+
+    // link_update.enter() creates an SVG line element for each new link
+    // object.  Note that we call .insert("line", ".node") to add SVG line
+    // elements to the DOM before any elements with class="node".  This
+    // guarantees that the lines will be drawn first.  (Try changing that to
+    // .append("line") to see what happens...)
+    link_update.enter()
+        .insert("line", ".node")
+        .attr("class", "link");
+
+    // link_update.exit() processes link objects that have been removed
+    // by removing its corresponding SVG line element.
+    link_update.exit()
+        .remove();
+
+    // Now update the nodes.  This is similar in structure to what we just
+    // did for the links:
+    //
+    // node_selection.data() returns a selection of nodes that need updating
+    // and defines two custom methods, .enter() and .exit(), that will process
+    // newly created node objects and deleted node objects.
+    // 
+    // Note that, similar to what we did for links, we've provided an id method
+    // that returns a unique and invariate identifier for each node.  This is
+    // what lets D3 associate each node object with its corresponding circle
+    // element in the DOM, even if the node object moves around in memory.
+    var node_update = svg.selectAll(".node").data(
+        force.nodes(), 
+        function(d) { console.log(d.id); return d.id;}
+    );
+
+    // Create an SVG circle for each new node added to the graph.  Note that we
+    // use a function to set the class of each node, because in this demo, the
+    // color is determined by the class of the node, e.g.
+    //      
+    //      <style> 
+    //        .node.a { fill: #1f77b4; } 
+    //      </style>
+    //      ...
+    //      <circle class="node a" r="8"</circle>
+    // 
+    // ... but other techniques are possible
+    node_update.enter()
+        .append("circle")
+        .attr("class", function(d) { return "node" })
+        .attr("r", 8);
+
+    // Remove the SVG circle whenever a node vanishes from the node list.
+    node_update.exit()
+        .remove();
+
+    // Start calling the tick() method repeatedly to lay out the graph.
+    force.start();
+}
+
+// This tick method is called repeatedly until the layout stabilizes.
+//
+// NOTE: the order in which we update nodes and links does NOT determine which
+// gets drawn first -- the drawing order is determined by the ordering in the
+// DOM.  See the notes under link_update.enter() above for one technique for
+// setting the ordering in the DOM.
+function tick() {
+
+    // Drawing the nodes: Update the cx, cy attributes of each circle element
+    // from the x, y fields of the corresponding node object.
+    svg.selectAll(".node")
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; })
+
+    // Drawing the links: Update the start and end points of each line element
+    // from the x, y fields of the corresponding source and target node objects.
+    svg.selectAll(".link")
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+}
+
+// ================================================================
+// Toplevel methods start here
+
+// 1. Add three nodes and three links.
+setTimeout(function() {
+    var a = [{id: 0}, {id: 1},{id: 2}];
+    a.map(i => nodes.push(i));
+    links.push({source: 0, target: 1}, {source: 0, target: 2});
+    update_graph();
+}, 0);
+
+</script>
