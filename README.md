@@ -127,3 +127,6 @@
 ##Part Eight: Design Patterns
 **Videos**
 - [Practical Design Patterns in JavaScript](https://www.pluralsight.com/courses/javascript-practical-design-patterns) by Jonathan Mills
+
+**Exercises**
+- [Exercises from Practical Design Patterns in JavaScript](8/practical-dp-in-js)
