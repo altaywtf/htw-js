@@ -1,4 +1,4 @@
-#~~Half~~ Last Term with Javascript
+# ~~Half~~ Last Term with Javascript
 
 > As a senior Mechanical Engineering student who wants to focus on web related areas after graduation, I decided to practice Javascript during my last half term as an undergraduate. 
 
@@ -8,9 +8,7 @@
 
 > **UPDATE (01.04.2016)**: Since this repo was kind of beneficial for me and some of my friends who wanted to take a look at JS or React Ecosystem during the past months, I decided to keep it updated till the end of this semester. You can also check [this repository](https://github.com/altayaydemir/ephas) for the some of the problems (and their solutions) I've dealt during these works.
 
-> **UPDATE (04.06.2016)**: 
-
-##Part One: Fundamentals
+## Part One: Fundamentals
 
 **Readings**
 - [Eloquent Javascript](http://eloquentjavascript.net/) by Marijn Haverbeke
@@ -25,7 +23,7 @@
 
 ---
 
-##Part Two: Introduction to Node
+## Part Two: Introduction to Node
 
 **Readings**
 - [The Art of Node](https://github.com/maxogden/art-of-node#) by Max Ogden
@@ -37,7 +35,7 @@
 
 ---
 
-##Part Three: React
+## Part Three: React
 
 **Readings**
 - [Official React Tutorial](https://facebook.github.io/react/docs/tutorial.html) by Facebook
@@ -59,7 +57,7 @@
 
 ---
 
-##Part Four: React Native
+## Part Four: React Native
 
 **Readings**
 - [Official React Native Tutorial](https://facebook.github.io/react-native/docs/tutorial.html#content)
@@ -78,7 +76,7 @@
 
 ---
 
-##Part Five: Flux (with Redux)
+## Part Five: Flux (with Redux)
 
 **Readings**
 - [Why does React emphasize on unidirectional data flow and Flux architecture?](https://hashnode.com/post/why-does-react-emphasize-on-unidirectional-data-flow-and-flux-architecture-ciibz8ej600n2j3xtxgc0n1f0#ciibz8qqt01rjj3xt97v8t8in)
@@ -104,7 +102,7 @@
 
 ---
 
-##Part Six: d3
+## Part Six: d3
 **Readings**
 - [d3 Tutorials](http://alignedleft.com/tutorials/d3/) by Scott Murray
 - [Integrating d3 with React](http://nicolashery.com/integrating-d3js-visualizations-in-a-react-app/)
@@ -117,14 +115,14 @@
 
 ---
 
-##Part Seven: Webpack
+## Part Seven: Webpack
 **Readings**
 - [SurviveJS - Webpack](https://leanpub.com/survivejs-webpack) by Juho Vepsäläinen, Tobias Koppers and Jesús Rodríguez Rodríguez.
 - [wepack-howto](https://github.com/petehunt/webpack-howto) by Pete Hunt.
 
 ---
 
-##Part Eight: Design Patterns
+## Part Eight: Design Patterns
 **Videos**
 - [Practical Design Patterns in JavaScript](https://www.pluralsight.com/courses/javascript-practical-design-patterns) by Jonathan Mills
 
