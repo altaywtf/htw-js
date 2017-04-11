@@ -6,7 +6,7 @@
 
 > This repository contains the path I follow while trying to gain an understanding and knowledge of the language itself and modern tools/frameworks built with it.
 
-> **UPDATE (01.04.2016)**: Since this repo was kind of beneficial for me and some of my friends who wanted to take a look at JS or React Ecosystem during the past months, I decided to keep it updated till the end of this semester. You can also check [this repository](https://github.com/altayaydemir/ephas) for the some of the problems (and their solutions) I've dealt during these works.
+> **UPDATE (01.04.2016)**: Since this repo was kind of beneficial for me and some of my friends who wanted to take a look at JS or React Ecosystem during the past months, I decided to keep it updated till the end of this semester.
 
 ## Part One: Fundamentals
 
@@ -53,7 +53,7 @@
 - [Hacking With React](3/hacking-with-react)
 
 **Projects**
-- [bilgi-shuttle-webapp](https://github.com/bilgishuttle/bilgi-shuttle-web)
+- [bilgi-shuttle-web](https://github.com/altayaydemir/bilgi-shuttle-web)
 
 ---
 
@@ -71,8 +71,8 @@
 - [AsyncStorageDemo](4/AsyncStorageDemo)
 
 **Projects**
-- [bilgi-shuttle-ios](https://github.com/bilgishuttle/bilgi-shuttle-ios)
-- [bilgi-shuttle-android](https://github.com/bilgishuttle/bilgi-shuttle-android)
+- [bilgi-shuttle-ios](https://github.com/altayaydemir/bilgi-shuttle-ios)
+- [bilgi-shuttle-android](https://github.com/altayaydemir/bilgi-shuttle-android)
 
 ---
 
@@ -94,10 +94,6 @@
 - [TDD Comments App](5/tdd-comments)
 
 **Projects**
-- [WebPageTestrr](https://github.com/altayaydemir/WebPageTestrr)
-- [Redux version of bilgi-shuttle-web](https://github.com/bilgishuttle/bilgi-shuttle-web/tree/develop)
-
-**Contributions**
 - [vortigern](https://github.com/barbar/vortigern/)
 
 ---
